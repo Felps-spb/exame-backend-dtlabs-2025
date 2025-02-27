@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+db:
+  image: postgres:13
+  environment:
+    POSTGRES_USER: user
+    POSTGRES_PASSWORD: password
+    POSTGRES_DB: iot_db
+  ports:
+    - "5432:5432"
+  volumes:
+    - postgres_data:/var/lib/postgresql/data/
+
+web:
+  build: .
+  command: uvicorn app.main:app --host
+  volumes:
+    - .:/app
+  ports:
+    - "8000:80"
+  environment:
+    - DATABASE_URL=postgresql://user:password@db:5432/iot_db
+  depends_on:
+    - db
+
+volumes:
+  postgres_data:
