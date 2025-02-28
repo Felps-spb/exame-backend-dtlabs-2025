@@ -19,25 +19,10 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
         raise HTTPException(status_code=401, detail="Token inválido ou expirado")
     return payload
 
-@router.get("/health/{server_ulid}", response_model=ServerHealthResponse)
-def get_server_status(
-    server_ulid: str,
-    db: Session = Depends(get_db),
-    current_user: dict = Depends(get_current_user),  # Exige autenticação JWT
-):
-    """
-    Endpoint para verificar o status de um servidor.
-    """
-    try:
-        server_health = get_server_health(db, server_ulid)
-        return server_health
-    except ValueError as e:
-        raise HTTPException(status_code=404, detail=str(e))
-
 @router.get("/health/all", response_model=AllServersHealthResponse)
 def get_all_servers_status(
     db: Session = Depends(get_db),
-    current_user: dict = Depends(get_current_user),  # Exige autenticação JWT
+    current_user: dict = Depends(get_current_user),
 ):
     """
     Endpoint para verificar o status de todos os servidores.
@@ -45,5 +30,20 @@ def get_all_servers_status(
     try:
         servers_health = get_all_servers_health(db)
         return servers_health
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+@router.get("/health/{server_ulid}", response_model=ServerHealthResponse)
+def get_server_status(
+    server_ulid: str,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    """
+    Endpoint para verificar o status de um servidor.
+    """
+    try:
+        server_health = get_server_health(db, server_ulid)
+        return server_health
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))

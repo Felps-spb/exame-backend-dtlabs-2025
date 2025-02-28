@@ -27,7 +27,7 @@ def get_server_health(db: Session, server_ulid: str):
         # Obtém o tempo atual em UTC (offset-aware)
         current_time = datetime.now(timezone.utc)
         # Verifica se o último dado foi recebido há menos de 10 segundos
-        if (current_time - last_data_timestamp) <= timedelta(seconds=10):
+        if (current_time - last_data_timestamp) <= timedelta(hours=1):
             status = "online"
         else:
             status = "offline"
