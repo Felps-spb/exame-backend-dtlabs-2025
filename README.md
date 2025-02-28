@@ -84,7 +84,7 @@ http://localhost:8000/docs
 Após o login, a API retorna um token JWT. Utilize esse token para acessar os endpoints protegidos.
 ---
 
-###📡 Enviar dados dos sensores
+#### 📡 Enviar dados dos sensores
 - Endpoint: `POST /data`
 - Exemplo de requisição:
   
