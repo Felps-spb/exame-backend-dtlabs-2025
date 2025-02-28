@@ -25,12 +25,7 @@ cd exame-backend-dtlabs-2025
 
 ### 2️⃣ Configure o Ambiente  
 
-Copie o arquivo `.env.example` para `.env`:  
-```bash
-cp .env.example .env
-```
-
-Edite o arquivo `.env` e configure as variáveis de ambiente:
+Edite o arquivo `.env` caso necessario e configure as variáveis de ambiente:
 ```env
 DATABASE_URL=postgresql://iot_user:iot_password@db:5432/iot_db
 SECRET_KEY=supersecretkey
@@ -42,6 +37,9 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```bash
 docker-compose up --build
 ```
+
+Caso aconteça algum erro na execução do projeto, confira se vc está com o Docker aberto e
+se todos os requisitos estão instalados. Suba a aplicação, e verifique se tudo deu certo!
 
 Isso vai:
 
