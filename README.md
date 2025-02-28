@@ -115,9 +115,9 @@ curl -X GET "http://localhost:8000/data?server_ulid=01JN49V9CGGY3XY8STNP1DVHBG&s
 ---
 ### 🩺 Verificar a saúde dos servidores
 #### ✅ Checar o status de um servidor específico:
-- Endpoint: GET /health/{server_ulid}
+- Endpoint: `GET /health/{server_ulid}`
 #### 🌍 Checar o status de todos os servidores:
-- Endpoint: GET /health/all
+- Endpoint: `GET /health/all`
 
 ---
 ### 🛑 Parar a aplicação
