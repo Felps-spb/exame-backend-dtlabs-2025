@@ -12,5 +12,5 @@ Projeto backend para uma aplicação de IoT, desenvolvido em Python com FastAPI 
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/exame-backend-dtlabs-2025.git
+   git https://github.com/Felps-spb/exame-backend-dtlabs-2025.git
    cd exame-backend-dtlabs-2025
